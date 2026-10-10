@@ -5,15 +5,15 @@ import { HeroDashboard } from "./hero-dashboard";
 
 export function StatsRow({ className = "" }: { className?: string }) {
   return (
-    <dl className={`grid grid-cols-2 gap-y-6 sm:grid-cols-4 ${className}`}>
+    <ul className={`grid grid-cols-2 gap-y-6 sm:grid-cols-4 ${className}`}>
       {stats.map((s, i) => (
-        <div key={s.label} className={`px-1 sm:px-4 ${i > 0 ? "sm:border-l sm:border-line" : "sm:pl-0"}`}>
+        <li key={s.label} className={`px-1 sm:px-4 ${i > 0 ? "sm:border-l sm:border-line" : "sm:pl-0"}`}>
           <Icon name={s.icon as IconKey} className="size-7 text-brand-600" />
-          <dd className="mt-2 text-2xl font-extrabold tracking-tight text-ink">{s.value}</dd>
-          <dt className="mt-0.5 text-[12.5px] leading-snug font-medium text-muted">{s.label}</dt>
-        </div>
+          <p className="mt-2 text-2xl font-extrabold tracking-tight text-ink">{s.value}</p>
+          <p className="mt-0.5 text-[12.5px] leading-snug font-medium text-muted">{s.label}</p>
+        </li>
       ))}
-    </dl>
+    </ul>
   );
 }
 
