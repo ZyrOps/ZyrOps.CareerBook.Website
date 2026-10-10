@@ -39,11 +39,15 @@ export function LifecycleDiagram({ compact = false }: { compact?: boolean }) {
                   {i + 1}
                 </span>
               </span>
-              <span className="text-sm leading-snug font-bold text-ink transition-colors group-hover:text-brand-700 sm:mt-4 sm:max-w-[9rem]">
+              <span
+                className={`text-sm leading-snug font-bold text-ink transition-colors group-hover:text-brand-700 ${
+                  compact ? "" : "sm:mt-4 sm:max-w-[9rem]"
+                }`}
+              >
                 {s.label}
               </span>
             </Link>
-            {i < steps.length - 1 && (
+            {!compact && i < steps.length - 1 && (
               <span aria-hidden="true" className="absolute top-[26px] -right-2 hidden text-brand-300 lg:block">
                 ›
               </span>
