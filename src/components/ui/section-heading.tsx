@@ -19,8 +19,10 @@ export function SectionHeading({
   eyebrow,
   align = "center",
   as: Tag = "h2",
+  id,
   className = "",
 }: {
+  id?: string;
   title: string;
   highlight?: string;
   subtitle?: string;
@@ -32,7 +34,7 @@ export function SectionHeading({
   return (
     <div className={`${align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-2xl"} ${className}`}>
       {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
-      <Tag className="text-3xl leading-tight font-extrabold sm:text-[38px]">
+      <Tag id={id} className="text-3xl leading-tight font-extrabold sm:text-[38px]">
         <Highlight text={title} highlight={highlight} />
       </Tag>
       {subtitle && <p className="mt-3 text-base leading-7 text-muted sm:text-[17px]">{subtitle}</p>}

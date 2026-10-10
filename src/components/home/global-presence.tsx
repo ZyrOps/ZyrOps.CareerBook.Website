@@ -1,6 +1,5 @@
 import mapData from "@/content/map-pins.json";
-import { countryMeta } from "@/content/countries";
-import { countryPages } from "@/content/countries";
+import { countryMeta, countryPages } from "@/content/countries";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Flag } from "./flag";
 import { WorldMap, type MapPin } from "./world-map";
@@ -29,12 +28,11 @@ export function GlobalPresence() {
     <section className="py-20 lg:py-24" aria-labelledby="global-heading">
       <div className="container-x">
         <SectionHeading
+          id="global-heading"
           title="A Global Partner in Education"
           highlight="Global Partner"
           subtitle="Trusted by 1,500+ educational institutions across 18 countries"
-          className="[&_h2]:scroll-mt-24"
         />
-        <span id="global-heading" className="sr-only">Global presence</span>
         <div className="mt-12">
           <GlobalMap />
         </div>
