@@ -34,7 +34,7 @@ export function Logo({ tone = "dark" }: { tone?: "dark" | "light" }) {
           CareerBook<span className="text-brand-600"> ERP</span>
           <sup className="ml-0.5 text-[9px] font-bold text-brand-600">™</sup>
         </span>
-        <span className={`mt-1 text-[9.5px] font-semibold tracking-wide ${light ? "text-white/70" : "text-muted"}`}>
+        <span className={`mt-1 text-[9.5px] font-semibold tracking-wide whitespace-nowrap ${light ? "text-white/70" : "text-muted"}`}>
           Enterprise Education Operating System
         </span>
       </span>

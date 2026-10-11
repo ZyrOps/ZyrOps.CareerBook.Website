@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { mainNav, sections, type NavGroup } from "@/content";
+import { allPages, mainNav, pageHref, sections, type NavGroup } from "@/content";
 import { Logo } from "@/components/brand/logo";
 import { Icon } from "@/components/ui/icon";
 import { HeaderClient } from "./header-client";
@@ -47,5 +47,11 @@ export function Header() {
     panel: <MegaPanel group={group} />,
     links: group.items.map(({ label, href }) => ({ label, href })),
   }));
-  return <HeaderClient logo={<Logo />} groups={groups} />;
+  const searchItems = [
+    { label: "Request a Demo", href: "/request-demo", group: "Get started" },
+    { label: "Contact Us", href: "/contact", group: "Get started" },
+    ...Object.values(sections).map((s) => ({ label: s.label, href: `/${s.key}`, group: "Sections" })),
+    ...allPages.map((p) => ({ label: p.navLabel, href: pageHref(p), group: sections[p.section].label })),
+  ];
+  return <HeaderClient logo={<Logo />} groups={groups} searchItems={searchItems} />;
 }

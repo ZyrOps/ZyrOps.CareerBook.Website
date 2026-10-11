@@ -19,6 +19,7 @@ export const site = {
     facebook: "https://www.facebook.com/careerbookerp",
     x: "https://x.com/careerbookerp",
     youtube: "https://www.youtube.com/@careerbookerp",
+    instagram: "https://www.instagram.com/careerbookerp",
   },
   analytics: {
     gaId: process.env.NEXT_PUBLIC_GA_ID,

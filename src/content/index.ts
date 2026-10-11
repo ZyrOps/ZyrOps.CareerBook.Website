@@ -131,7 +131,7 @@ export const mainNav: NavGroup[] = [
   { label: "Platform", href: "/platform", items: toNav("platform") },
   { label: "Solutions", href: "/solutions", items: toNav("solutions") },
   { label: "Industries", href: "/industries", items: toNav("industries") },
-  { label: "Countries", href: "/countries", items: toNav("countries") },
+  { label: "Global Presence", href: "/countries", items: toNav("countries") },
   { label: "Resources", href: "/resources", items: toNav("resources") },
   {
     label: "Company",

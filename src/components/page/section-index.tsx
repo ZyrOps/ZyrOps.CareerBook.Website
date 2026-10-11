@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { pageHref, pagesIn, type Section } from "@/content";
 import { CtaBanner } from "@/components/home/cta-banner";
+import { ExecutiveIntelligence } from "@/components/home/executive-intelligence";
 import { GlobalMap } from "@/components/home/global-presence";
 import { LifecycleDiagram } from "@/components/home/student-lifecycle";
 import { ArchitectureDiagram } from "@/components/diagrams/architecture-diagram";
@@ -77,6 +78,7 @@ export function SectionIndex({ section }: { section: Section }) {
           </div>
         </section>
       )}
+      {section.key === "solutions" && <ExecutiveIntelligence />}
 
       {section.key !== "trust" && <CtaBanner />}
 

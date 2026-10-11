@@ -4,6 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { LanguageMenu } from "./language-menu";
+import { SiteSearch, type SearchItem } from "./site-search";
 
 type Group = {
   label: string;
@@ -12,7 +14,7 @@ type Group = {
   links: { label: string; href: string }[];
 };
 
-export function HeaderClient({ logo, groups }: { logo: ReactNode; groups: Group[] }) {
+export function HeaderClient({ logo, groups, searchItems }: { logo: ReactNode; groups: Group[]; searchItems: SearchItem[] }) {
   const pathname = usePathname();
   const [open, setOpen] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -68,10 +70,10 @@ export function HeaderClient({ logo, groups }: { logo: ReactNode; groups: Group[
         scrolled ? "shadow-[0_1px_0_var(--color-line),0_8px_24px_-16px_rgb(28_20_51/0.25)]" : "shadow-[0_1px_0_var(--color-line)]"
       }`}
     >
-      <div className="container-x flex h-[72px] items-center justify-between gap-6">
+      <div className="container-x flex h-[72px] items-center justify-between gap-4">
         {logo}
 
-        <nav aria-label="Main" className="hidden lg:block">
+        <nav aria-label="Main" className="hidden xl:block">
           <ul className="flex items-center gap-1">
             {groups.map((g) => (
               <li key={g.label} className="relative" onMouseEnter={() => show(g.label)} onMouseLeave={hide}>
@@ -80,7 +82,7 @@ export function HeaderClient({ logo, groups }: { logo: ReactNode; groups: Group[
                   aria-expanded={open === g.label}
                   aria-haspopup="true"
                   onClick={() => setOpen(open === g.label ? null : g.label)}
-                  className={`flex items-center gap-1 rounded-md px-3 py-2 text-[13.5px] font-semibold transition-colors ${
+                  className={`flex items-center gap-1 rounded-md px-2 py-2 text-[13.5px] font-semibold whitespace-nowrap transition-colors 2xl:px-3 ${
                     isActive(g.href) || open === g.label ? "text-brand-700" : "text-ink hover:text-brand-700"
                   }`}
                 >
@@ -105,17 +107,21 @@ export function HeaderClient({ logo, groups }: { logo: ReactNode; groups: Group[
           </ul>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <SiteSearch items={searchItems} />
+          <div className="hidden md:block">
+            <LanguageMenu />
+          </div>
           <Link
             href="/request-demo"
-            className="group hidden h-10 items-center gap-2 rounded-lg bg-accent-500 px-5 text-[13px] font-bold text-white shadow-[0_8px_20px_-8px_rgb(249_115_22/0.7)] transition-colors hover:bg-accent-600 sm:inline-flex"
+            className="group ml-1 hidden h-10 items-center gap-2 rounded-lg bg-accent-500 px-4 text-[13px] font-bold whitespace-nowrap 2xl:px-5 text-white shadow-[0_8px_20px_-8px_rgb(249_115_22/0.7)] transition-colors hover:bg-accent-600 sm:inline-flex"
           >
             Request a Demo
             <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
           <button
             type="button"
-            className="grid size-10 place-items-center rounded-lg text-ink hover:bg-brand-50 lg:hidden"
+            className="grid size-10 place-items-center rounded-lg text-ink hover:bg-brand-50 xl:hidden"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
@@ -128,7 +134,7 @@ export function HeaderClient({ logo, groups }: { logo: ReactNode; groups: Group[
 
       <div
         id="mobile-nav"
-        className={`fixed inset-x-0 top-[72px] bottom-0 overflow-y-auto bg-white transition-opacity duration-200 lg:hidden ${
+        className={`fixed inset-x-0 top-[72px] bottom-0 overflow-y-auto bg-white transition-opacity duration-200 xl:hidden ${
           mobileOpen ? "visible opacity-100" : "invisible opacity-0"
         }`}
       >

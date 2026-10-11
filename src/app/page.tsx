@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import { CompleteSolution } from "@/components/home/complete-solution";
+import { Credentials } from "@/components/home/credentials";
 import { CtaBanner } from "@/components/home/cta-banner";
-import { ExecutiveIntelligence } from "@/components/home/executive-intelligence";
 import { GlobalPresence } from "@/components/home/global-presence";
 import { Hero } from "@/components/home/hero";
-import { SolutionSuites } from "@/components/home/solution-suites";
-import { StudentLifecycle } from "@/components/home/student-lifecycle";
+import { HigherEducation } from "@/components/home/higher-education";
+import { InstitutionTypes } from "@/components/home/institution-types";
+import { SmarterOperations } from "@/components/home/smarter-operations";
+import { Testimonials } from "@/components/home/testimonials";
 import { TrustedBy } from "@/components/home/trusted-by";
 import { JsonLd } from "@/components/seo/json-ld";
 import { buildMetadata, softwareSchema } from "@/lib/seo";
@@ -21,11 +24,14 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <InstitutionTypes />
+      <CompleteSolution />
       <GlobalPresence />
-      <ExecutiveIntelligence />
-      <StudentLifecycle />
-      <SolutionSuites />
+      <HigherEducation />
+      <SmarterOperations />
+      <Credentials />
       <TrustedBy />
+      <Testimonials />
       <CtaBanner />
       <JsonLd data={softwareSchema} />
     </>

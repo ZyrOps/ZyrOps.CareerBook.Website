@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope } from "next/font/google";
+import { Caveat, Manrope } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { WhatsAppButton } from "@/components/layout/whatsapp-button";
@@ -12,6 +12,13 @@ import "./globals.css";
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  weight: "700",
   display: "swap",
 });
 
@@ -63,8 +70,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" dir="ltr" className={manrope.variable}>
-      <body className="flex min-h-dvh flex-col">
+    <html lang="en" dir="ltr" className={`${manrope.variable} ${caveat.variable}`}>
+      <body id="top" className="flex min-h-dvh flex-col">
         <a
           href="#main"
           className="sr-only z-[60] rounded-md bg-brand-700 px-4 py-2 text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3"

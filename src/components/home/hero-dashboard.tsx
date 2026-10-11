@@ -1,4 +1,4 @@
-import { AreaChart, Donut } from "@/components/charts/charts";
+import { BarChart, Donut } from "@/components/charts/charts";
 import { LogoMark } from "@/components/brand/logo";
 import { Icon, type IconKey } from "@/components/ui/icon";
 
@@ -16,17 +16,18 @@ const nav: { label: string; icon: IconKey }[] = [
 ];
 
 const kpis = [
-  { label: "Total Students", value: "12,850", delta: "4.6%", icon: "graduation" as const },
-  { label: "Total Staff", value: "1,240", delta: "2.1%", icon: "users" as const },
-  { label: "Attendance", value: "96%", delta: "1.2%", icon: "calendar" as const },
-  { label: "Active Courses", value: "320", delta: "3.4%", icon: "book" as const },
+  { label: "Total Students", value: "12,850", delta: "12%", icon: "graduation" as const },
+  { label: "Total Revenue", value: "₹32.4 Cr", delta: "18%", icon: "banknote" as const },
+  { label: "Fee Collection", value: "96%", delta: "8%", icon: "wallet" as const },
+  { label: "Active Staff", value: "1,240", delta: "6%", icon: "users" as const },
 ];
 
 const actions: { label: string; icon: IconKey }[] = [
   { label: "Add Student", icon: "userPlus" },
-  { label: "Collect Fee", icon: "receipt" },
-  { label: "Send Notice", icon: "megaphone" },
-  { label: "Generate Report", icon: "fileText" },
+  { label: "Generate Fee", icon: "receipt" },
+  { label: "Create Question Paper", icon: "fileText" },
+  { label: "View Reports", icon: "chartColumn" },
+  { label: "Send Communication", icon: "megaphone" },
 ];
 
 export function HeroDashboard() {
@@ -67,13 +68,10 @@ export function HeroDashboard() {
               <p className="text-[13px] font-extrabold text-ink">Good Morning, Principal</p>
               <p className="text-[9.5px] text-muted">Here&apos;s what&apos;s happening at your institution today.</p>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="relative grid size-7 place-items-center rounded-full bg-surface text-muted">
-                <Icon name="bell" className="size-3.5" />
-                <span className="absolute top-1 right-1.5 size-1.5 rounded-full bg-accent-500" />
-              </span>
-              <span className="grid size-7 place-items-center rounded-full bg-brand-100 text-[9px] font-bold text-brand-700">PR</span>
-            </div>
+            <span className="flex items-center gap-1.5 shrink-0 rounded-md border border-line px-2 py-1 text-[8.5px] font-semibold whitespace-nowrap text-body">
+              Academic Year 2025-26
+              <Icon name="calendar" className="size-3 text-muted" />
+            </span>
           </div>
 
           <div className="mt-3 grid grid-cols-4 gap-2 max-sm:grid-cols-2">
@@ -83,7 +81,7 @@ export function HeroDashboard() {
                   <p className="text-[8.5px] font-semibold text-muted">{k.label}</p>
                   <Icon name={k.icon} className="size-3 text-brand-500" />
                 </div>
-                <p className="mt-1 text-[15px] leading-none font-extrabold text-ink">{k.value}</p>
+                <p className="mt-1 text-[15px] leading-none font-extrabold whitespace-nowrap text-ink max-xl:text-[13px]">{k.value}</p>
                 <p className="mt-1 text-[8px] font-bold text-emerald-600">▲ {k.delta}</p>
               </div>
             ))}
@@ -91,17 +89,16 @@ export function HeroDashboard() {
 
           <div className="mt-2.5 grid grid-cols-[1.7fr_1fr] gap-2">
             <div className="rounded-lg border border-line p-2.5">
-              <p className="text-[9.5px] font-bold text-ink">Student Enrollment Trend</p>
-              <AreaChart
-                id="hero-enrol"
-                values={[8200, 8900, 8700, 9800, 10400, 10100, 11300, 12100, 12850]}
-                labels={["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"]}
-                className="mt-1 h-[92px]"
+              <p className="text-[9.5px] font-bold text-ink">Admission Trend</p>
+              <BarChart
+                values={[420, 560, 610, 540, 720, 860, 940]}
+                labels={["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"]}
+                className="mt-2 h-[92px]"
               />
             </div>
             <div className="rounded-lg border border-line p-2.5">
               <p className="text-[9.5px] font-bold text-ink">Fee Collection</p>
-              <Donut value={78} label="Collected" className="mx-auto mt-2 size-[78px]" />
+              <Donut value={82} label="Collected" className="mx-auto mt-2 size-[78px]" />
               <div className="mt-2 flex justify-center gap-2.5 text-[7.5px] font-semibold text-muted">
                 <span className="flex items-center gap-1"><i className="size-1.5 rounded-full bg-brand-600" />Collected</span>
                 <span className="flex items-center gap-1"><i className="size-1.5 rounded-full bg-accent-200" />Pending</span>
@@ -111,11 +108,11 @@ export function HeroDashboard() {
 
           <div className="mt-2.5">
             <p className="text-[9.5px] font-bold text-ink">Quick Actions</p>
-            <div className="mt-1.5 grid grid-cols-4 gap-2">
+            <div className="mt-1.5 grid grid-cols-5 gap-1.5 max-sm:grid-cols-3">
               {actions.map((a) => (
-                <div key={a.label} className="flex flex-col items-center gap-1 rounded-lg border border-line py-2">
+                <div key={a.label} className="flex flex-col items-center gap-1 rounded-lg border border-line px-1 py-2 text-center">
                   <Icon name={a.icon} className="size-4 text-brand-600" />
-                  <span className="text-[8px] font-semibold text-body">{a.label}</span>
+                  <span className="text-[7.5px] leading-tight font-semibold text-body">{a.label}</span>
                 </div>
               ))}
             </div>
