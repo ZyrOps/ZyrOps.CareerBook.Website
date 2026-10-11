@@ -32,7 +32,7 @@ export function SectionHeading({
   className?: string;
 }) {
   return (
-    <div className={`${align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-2xl"} ${className}`}>
+    <div className={`${align === "center" ? "mx-auto max-w-[980px] text-center" : "max-w-2xl"} ${className}`}>
       {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
       <Tag id={id} className="text-3xl leading-tight font-extrabold sm:text-[38px]">
         <Highlight text={title} highlight={highlight} />

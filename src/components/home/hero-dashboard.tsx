@@ -42,7 +42,7 @@ export function HeroDashboard() {
         <aside className="border-r border-line bg-surface p-3 max-sm:hidden">
           <div className="mb-4 flex items-center gap-1.5 px-1">
             <LogoMark className="size-6" />
-            <span className="text-[10px] font-extrabold text-brand-950">
+            <span className="text-[9.5px] font-extrabold whitespace-nowrap text-brand-950">
               CareerBook<span className="text-brand-600"> ERP</span>
             </span>
           </div>

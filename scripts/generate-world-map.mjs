@@ -13,7 +13,7 @@ const d = map
   .getPoints()
   .map(({ x, y }) => `M${+x.toFixed(2)} ${+y.toFixed(2)}h0`)
   .join("");
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}"><path d="${d}" stroke="#d6cdea" stroke-width="0.56" stroke-linecap="round"/></svg>`;
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}"><path d="${d}" stroke="#cbc1e2" stroke-width="0.6" stroke-linecap="round"/></svg>`;
 
 mkdirSync("public/maps", { recursive: true });
 writeFileSync("public/maps/world-dots.svg", svg);

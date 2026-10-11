@@ -11,7 +11,7 @@ function Wordmark({ c }: { c: Customer }) {
   const font = c.style === "serif" ? "font-serif tracking-wide" : c.style === "caps" ? "tracking-[0.12em]" : "tracking-tight";
   return (
     <span className="flex flex-col items-center leading-none" role="img" aria-label={c.name}>
-      <span className={`text-xl font-extrabold text-ink/75 ${font}`}>{c.mark}</span>
+      <span className={`font-extrabold whitespace-nowrap text-ink/75 ${c.mark.length > 8 ? "text-base" : "text-xl"} ${font}`}>{c.mark}</span>
       {c.sub && <span className="mt-1 max-w-[9rem] truncate text-[7.5px] font-bold tracking-[0.18em] text-muted">{c.sub}</span>}
     </span>
   );
@@ -24,7 +24,7 @@ export function TrustedBy() {
         <SectionHeading
           id="trusted-heading"
           title="Trusted by Leading Educational Institutions"
-          highlight="Leading Educational Institutions"
+          highlight="Leading"
           subtitle="From schools to universities, our partners trust CareerBook ERP™ to power their growth."
         />
         <ul className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
